@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Clockwork Spire — Roguelike Deck-Builder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="stage">
+  <!-- Title -->
+  <div id="title-screen" class="screen">
+    <div class="tower" aria-hidden="true">
+      <div class="tower-top">🕰️</div>
+      <div class="tower-body">⚙️<br>⚙️<br>⚙️</div>
+      <div class="tower-base">▂▃▅▆▇</div>
+    </div>
+    <h1 class="game-title">THE CLOCKWORK<br><span class="spire-word">SPIRE</span></h1>
+    <p class="tagline">A roguelike deck-builder in a brass tower</p>
+    <p class="rules-line">Climb 5 floors. Beat each Guardian. Draft a new card after every victory.</p>
+    <button id="start-button" class="big-button">⚙ CLIMB THE SPIRE</button>
+    <p class="hint-line">Click a card to play it &nbsp;·&nbsp; Keys 1–5 pick a card &nbsp;·&nbsp; Enter ends your turn</p>
+    <p class="credit-line">An original game · gears, brass and borrowed time</p>
+  </div>
+
+  <!-- Battle -->
+  <div id="battle-screen" class="screen hidden">
+    <header id="top-bar">
+      <div id="floor-box">
+        <div id="floor-label">FLOOR 1 / 5</div>
+        <div id="deck-label">DECK 8 CARDS</div>
+      </div>
+      <div class="fighter enemy-side">
+        <div class="fighter-name"><span id="guardian-name">⚙ COG RAT</span> <span id="intent-badge" class="intent attack">⚔ 6</span></div>
+        <div class="hp-track"><div id="enemy-hp-fill" class="hp-fill enemy-hp"></div><span id="enemy-hp-text" class="hp-text">18 / 18</span></div>
+        <div id="enemy-block" class="block-line"></div>
+      </div>
+      <div class="fighter player-side">
+        <div class="fighter-name">🔧 THE HOROLOGIST <span class="you-tag">YOU</span></div>
+        <div class="hp-track"><div id="player-hp-fill" class="hp-fill player-hp"></div><span id="player-hp-text" class="hp-text">40 / 40</span></div>
+        <div id="player-block" class="block-line"></div>
+      </div>
+    </header>
+
+    <div id="arena">
+      <div id="arena-message">Your turn — play cards, then end your turn.</div>
+      <div id="played-row" class="played-row"></div>
+    </div>
+    <div id="player-row" class="card-row player-hand"></div>
+
+    <footer id="bottom-bar">
+      <div id="energy-box"><span id="energy-gears"></span><span id="energy-text">3 / 3 energy</span></div>
+      <div id="score-box">Score: <span id="score-text">0</span></div>
+      <button id="end-turn-button" class="big-button small">END TURN ⏎</button>
+    </footer>
+  </div>
+
+  <!-- Floor victory + draft -->
+  <div id="draft-screen" class="screen hidden">
+    <h1 class="draft-title">⚙ FLOOR CLEARED!</h1>
+    <p id="draft-line" class="end-line">The Cog Rat winds down. The Spire offers you a new card.</p>
+    <p class="draft-prompt">CHOOSE ONE CARD FOR YOUR DECK</p>
+    <div id="draft-row" class="card-row draft-hand"></div>
+    <p class="hint-line">Click a card — or press 1, 2 or 3</p>
+  </div>
+
+  <!-- Final victory -->
+  <div id="victory-screen" class="screen hidden">
+    <h1 class="end-title win">👑 THE SPIRE IS YOURS</h1>
+    <p class="end-line">The Grand Horologist stops. Every gear in the tower ticks for you now.</p>
+    <div id="victory-stats" class="end-stats"></div>
+    <button id="victory-again-button" class="big-button">CLIMB AGAIN</button>
+    <p class="hint-line">Press Enter to climb again</p>
+  </div>
+
+  <!-- Defeat -->
+  <div id="defeat-screen" class="screen hidden">
+    <h1 class="end-title lose">⚙ THE SPIRE STANDS SILENT</h1>
+    <p class="end-line">Your gears stop on the stairs. The tower keeps ticking without you.</p>
+    <div id="defeat-stats" class="end-stats"></div>
+    <button id="defeat-again-button" class="big-button">TRY AGAIN</button>
+    <p class="hint-line">Press Enter to try again</p>
+  </div>
+
+  <div id="toast"></div>
+</div>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
